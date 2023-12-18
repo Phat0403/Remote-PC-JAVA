@@ -591,7 +591,7 @@ public class ClientController {
                 receiveMail receive = new receiveMail(username, password);
                 receive.receiveMail();
                 if (receive.getContent().equals(key + " " + number)) {
-                    if (receive.getText().equals("successfull")) {
+                    if (receive.getText().strip().equals("successfull")) {
                         Platform.runLater(() -> {
                             buttonStartPrc.setDisable(false);
                             text_prc.setText("Run " + process + " successfully!");
