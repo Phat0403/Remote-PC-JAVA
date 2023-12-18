@@ -113,7 +113,7 @@ public class ClientController {
             Thread newThread = new Thread(() -> {
                 send.setSubject(key + " " + number);
                 send.sendContent("5");
-                File oldfile = new File("src/main/resources/com/example/project/file/screen.png");
+                File oldfile = new File("./Client/src/main/resources/com/example/project/file/screen.png");
                 oldfile.delete();
 
                 long startTime = System.currentTimeMillis();
@@ -126,7 +126,7 @@ public class ClientController {
                     System.out.println(receive.getContent());
 
                     if (receive.getContent().equals(key + " " + number)) {
-                        File file = new File("src/main/resources/com/example/project/file/screen.png");
+                        File file = new File("./Client/src/main/resources/com/example/project/file/screen.png");
                         Image image = new Image(file.toURI().toString());
                         Platform.runLater(() -> {
                             scrshot.setImage(image);
@@ -163,7 +163,7 @@ public class ClientController {
     public void OnButtonZoom(ActionEvent event) throws IOException {
         if (!buttonzoom.isDisable()) {
             Platform.runLater(() -> {
-                File file = new File("src/main/resources/com/example/project/file/screen.png");
+                File file = new File("./Client/src/main/resources/com/example/project/file/screen.png");
                 Image imageshow = new Image(file.toURI().toString());
                 ImageView imageView = new ImageView(imageshow);
                 imageView.setFitHeight(780);
@@ -182,7 +182,7 @@ public class ClientController {
 
     public void OnButtonSaveas(ActionEvent event) throws IOException {
         System.out.println("saveas");
-        String sourceFilePath = "src/main/resources/com/example/project/file/screen.png";
+        String sourceFilePath = "./Client/src/main/resources/com/example/project/file/screen.png";
         if (!buttonsaveasScr.isDisable()) {
             Platform.runLater(() -> {
                 FileDialog fileDialog = new FileDialog(new Frame(), "Save As", FileDialog.SAVE);
@@ -250,7 +250,7 @@ public class ClientController {
             Thread newThread = new Thread(() -> {
                 send.setSubject(key + " " + number);
                 send.sendContent("7");
-                File oldfile = new File("src/main/resources/com/example/project/file/keylog.txt");
+                File oldfile = new File("./Client/src/main/resources/com/example/project/file/keylog.txt");
                 oldfile.delete();
                 long startTime = System.currentTimeMillis();
                 long timeout = 60000; // 60 seconds in milliseconds
@@ -261,7 +261,7 @@ public class ClientController {
                     receive.receiveMail();
                     System.out.println(receive.getContent());
                     if (receive.getContent().equals(key + " " + number)) {
-                        File file = new File("src/main/resources/com/example/project/file/keylog.txt");
+                        File file = new File("./Client/src/main/resources/com/example/project/file/keylog.txt");
                         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                             StringBuilder content = new StringBuilder();
                             String text;
@@ -303,7 +303,7 @@ public class ClientController {
 
     public void OnButtonSaveasLog(ActionEvent event) throws IOException {
         System.out.println("saveas");
-        String sourceFilePath = "src/main/resources/com/example/project/file/keylog.txt";
+        String sourceFilePath = "./Client/src/main/resources/com/example/project/file/keylog.txt";
         if (!buttonsaveasLog.isDisable()) {
             Platform.runLater(() -> {
                 FileDialog fileDialog = new FileDialog(new Frame(), "Save As", FileDialog.SAVE);
@@ -423,7 +423,7 @@ public class ClientController {
             send.setSubject(key + " " + number);
             send.sendContent("9");
 
-            File oldfile = new File("src/main/resources/com/example/project/file/listPrc.txt");
+            File oldfile = new File("./Client/src/main/resources/com/example/project/file/listPrc.txt");
             oldfile.delete();
             long startTime = System.currentTimeMillis();
             long timeout = 60000; // 60 seconds in milliseconds
@@ -468,7 +468,7 @@ public class ClientController {
     }
 
     public void loadDataFromFile() {
-        File file = new File("src/main/resources/com/example/project/file/listPrc.txt");
+        File file = new File("./Client/src/main/resources/com/example/project/file/listPrc.txt");
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -585,7 +585,7 @@ public class ClientController {
             long timeout = 60000; // 60 seconds in milliseconds
 
             boolean correctResponseReceived = false;
-            File oldfile = new File("src/main/resources/com/example/project/file/listApp.txt");
+            File oldfile = new File("./Client/src/main/resources/com/example/project/file/listApp.txt");
             oldfile.delete();
             while (System.currentTimeMillis() - startTime < timeout && !correctResponseReceived) {
                 receiveMail receive = new receiveMail(username, password);
@@ -621,7 +621,7 @@ public class ClientController {
     }
 
     public void loadAppFromFile() {
-        File file = new File("src/main/resources/com/example/project/file/listApp.txt");
+        File file = new File("./Client/src/main/resources/com/example/project/file/listApp.txt");
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             br.readLine();
@@ -696,7 +696,7 @@ public class ClientController {
             long timeout = 60000; // 60 seconds in milliseconds
 
             boolean correctResponseReceived = false;
-            File oldfile = new File("src/main/resources/com/example/project/file/filelists.txt");
+            File oldfile = new File("./Client/src/main/resources/com/example/project/file/filelists.txt");
             oldfile.delete();
             while (System.currentTimeMillis() - startTime < timeout && !correctResponseReceived) {
                 receiveMail receive = new receiveMail(username, password);
@@ -755,7 +755,7 @@ public class ClientController {
     }
 
     public void loadAddressFromFile() {
-        File file = new File("src/main/resources/com/example/project/file/filelists.txt");
+        File file = new File("./Client/src/main/resources/com/example/project/file/filelists.txt");
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -785,7 +785,7 @@ public class ClientController {
 
     public void OnButtonSaveGetFile(ActionEvent event) {
         System.out.println("saveas");
-        String sourceFilePath = "src/main/resources/com/example/project/file/" + nameFile;
+        String sourceFilePath = "./Client/src/main/resources/com/example/project/file/" + nameFile;
         if (!buttonSaveGetFile.isDisable()) {
             Platform.runLater(() -> {
                 FileDialog fileDialog = new FileDialog(new Frame(), "Save As", FileDialog.SAVE);

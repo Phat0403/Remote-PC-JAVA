@@ -3,7 +3,7 @@ import java.io.*;
 
 
 public class ListPrc {
-    private final String filePath = "src/main/resources/com/example/server/file/listPrc.txt";
+    private final String filePath = "./Server/src/main/resources/com/example/server/file/listPrc.txt";
     private File tempFile = new File(filePath);
 
     public File run() throws IOException {

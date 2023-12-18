@@ -127,7 +127,7 @@ public class receiveMail {
                         MimeBodyPart mimeBodyPart = (MimeBodyPart) bodyPart;
                         String fileName = mimeBodyPart.getFileName();
                         this.nameFile = fileName;
-                        File fileToSave = new File("src/main/resources/com/example/project/file/" + fileName);
+                        File fileToSave = new File("./Client/src/main/resources/com/example/project/file/" + fileName);
                         mimeBodyPart.saveFile(fileToSave);
                     }
                 }

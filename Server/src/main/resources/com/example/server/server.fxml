@@ -36,7 +36,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="text_code" layoutX="25.0" layoutY="62.0" prefHeight="42.0" prefWidth="150.0" style="-fx-background-color: #ced6e0; -fx-background-radius: 5px; -fx-border-radius: 5px;">
+      <Label fx:id="text_code" layoutX="25.0" layoutY="62.0" prefHeight="42.0" prefWidth="163.0" style="-fx-background-color: #ced6e0; -fx-background-radius: 5px; -fx-border-radius: 5px;">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

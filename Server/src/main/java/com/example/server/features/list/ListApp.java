@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ListApp {
-    private final String filePath = "src/main/resources/com/example/server/file/listApp.txt";
+    private final String filePath = "./Server/src/main/resources/com/example/server/file/listApp.txt";
     private File tempFile = new File(filePath);
 
     public File run() throws IOException {

@@ -9,6 +9,4 @@ public class Controller {
 
     @FXML
     private ImageView imageView;
-
-
 }
