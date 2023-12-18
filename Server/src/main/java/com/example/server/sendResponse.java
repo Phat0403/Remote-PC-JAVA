@@ -245,11 +245,11 @@ public class sendResponse extends Thread{
                     Server.nameReqList.add("Run app " + appName);
                     sendMail sm = new sendMail(getMail(Server.mailList.get(index)),DEFAULT_MAIL,DEFAULT_PASSWORD,key+" "+Server.numberList.get(index));
                     if (ra.isSuccess()){
-                        sm.sendContent("Run "+ appName + " successfully");
+                        sm.sendContent("successfull");
                         Server.resList.add("Successful");
                     }
                     else {
-                        sm.sendContent(appName+" is not exist");
+                        sm.sendContent("unsuccessful");
                         Server.resList.add("Unsuccessful");
                     }
                     break;

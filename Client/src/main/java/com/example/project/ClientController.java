@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -37,15 +38,17 @@ public class ClientController {
     private Button buttonsd, buttonsl, buttonres, buttonlog,
             buttonscrshot, buttonzoom, buttonsaveasScr,
             buttonLogTurnOn, buttonLogTurnOff, buttonsaveasLog,
-            buttonStartPrc, buttonStartApp,
+            buttonListPrc, buttonListApp,
             buttonBackAddress, buttonGetAddress, buttonResGet, buttonSaveGetFile,
-            buttonKillPrc;
+            buttonKillPrc, buttonStartPrc;
     @FXML
     private Label responsePower, responeScr, label_warning;
     @FXML
     private ImageView scrshot;
     @FXML
     private TextArea LogText;
+    @FXML
+    private TextField text_startprc;
     @FXML
     private Label text_app, text_prc, text_address, text_keylog;
     private int number = 0;
@@ -384,6 +387,7 @@ public class ClientController {
                         buttonres.setDisable(false);
                         buttonlog.setDisable(false);
                         responsePower.setText("Failed, please sendmail again!");
+                        responsePower.setTextFill(Color.RED);
                     });
                 }
             });
@@ -412,10 +416,10 @@ public class ClientController {
     private TableColumn<TaskInfo.Process, String> prc_MemUsage;
     private ObservableList<TaskInfo.Process> ProcessList;
 
-    public void OnStartPrc(ActionEvent event) {
+    public void OnListPrc(ActionEvent event) {
         number += 1;
         Platform.runLater(() -> {
-            buttonStartPrc.setDisable(true);
+            buttonListPrc.setDisable(true);
             text_prc.setText("Please wait for a few seconds!");
             text_prc.setTextFill(Color.GREEN);
         });
@@ -444,7 +448,7 @@ public class ClientController {
                         prc_MemUsage.setCellValueFactory(new PropertyValueFactory<TaskInfo.Process, String>("prc_MemUsage"));
                         loadDataFromFile();
                         prc_Table.setItems(ProcessList);
-                        buttonStartPrc.setDisable(false);
+                        buttonListPrc.setDisable(false);
                         text_prc.setText("");
                     });
                     return;
@@ -457,7 +461,7 @@ public class ClientController {
             }
             if (!correctResponseReceived) {
                 Platform.runLater(() -> {
-                    buttonStartPrc.setDisable(false);
+                    buttonListPrc.setDisable(false);
                     text_app.setText("Failed, send mail again!");
                     text_app.setTextFill(Color.RED);
                 });
@@ -483,6 +487,7 @@ public class ClientController {
             e.printStackTrace();
         }
     }
+
     public void OnButtonKillPrc() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to " + "kill this process" + "?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
@@ -490,7 +495,7 @@ public class ClientController {
             number += 1;
             Platform.runLater(() -> {
                 buttonKillPrc.setDisable(true);
-                buttonStartPrc.setDisable(true);
+                buttonListPrc.setDisable(true);
                 text_prc.setText("Please wait a few minutes!");
                 responeScr.setTextFill(Color.GREEN);
             });
@@ -501,12 +506,11 @@ public class ClientController {
                 if (selectedPID != null) {
                     pid = selectedPID.getPrc_PID();
                     send.setSubject(key + " " + number);
-                    send.sendContent("11"+ " "+pid);
-                    Platform.runLater(()->{
+                    send.sendContent("11" + " " + pid);
+                    Platform.runLater(() -> {
                         text_prc.setText("Please, wait for a few sencond");
                     });
-                }
-                else {
+                } else {
                     text_prc.setText("Please, choose a process to kill");
                     return;
                 }
@@ -518,10 +522,10 @@ public class ClientController {
                     receiveMail receive = new receiveMail(username, password);
                     receive.receiveMail();
                     if (receive.getContent().equals(key + " " + number)) {
-                        if (receive.getText().strip().equals("Successfull")){
-                            Platform.runLater(()->{
+                        if (receive.getText().strip().equals("Successfull")) {
+                            Platform.runLater(() -> {
                                 buttonKillPrc.setDisable(false);
-                                buttonStartPrc.setDisable(false);
+                                buttonListPrc.setDisable(false);
                                 text_prc.setText("Kill process successfull!");
                                 TaskInfo.Process foundProcess = ProcessList.stream()
                                         .filter(process -> pid.equals(process.getPrc_PID()))
@@ -533,11 +537,10 @@ public class ClientController {
                                     prc_Table.setItems(ProcessList);
                                 }
                             });
-                        }
-                        else {
-                            Platform.runLater(()->{
+                        } else {
+                            Platform.runLater(() -> {
                                 buttonKillPrc.setDisable(false);
-                                buttonStartPrc.setDisable(false);
+                                buttonListPrc.setDisable(false);
                                 text_prc.setText("Kill process UnSuccessfull!");
                             });
                         }
@@ -551,9 +554,9 @@ public class ClientController {
                 }
 
                 if (!correctResponseReceived) {
-                    Platform.runLater(()->{
+                    Platform.runLater(() -> {
                         buttonKillPrc.setDisable(false);
-                        buttonStartPrc.setDisable(false);
+                        buttonListPrc.setDisable(false);
                         text_prc.setText("Kill process UnSuccessfull!");
                     });
                 }
@@ -561,9 +564,63 @@ public class ClientController {
             newThread.start();
         } else {
             buttonKillPrc.setDisable(false);
-            buttonStartPrc.setDisable(false);
+            buttonListPrc.setDisable(false);
         }
     }
+
+    public void OnButtonStartPrc() {
+        number += 1;
+        Platform.runLater(() -> {
+            buttonStartPrc.setDisable(true);
+            text_prc.setText("Please wait a few minutes!");
+            text_prc.setTextFill(Color.GREEN);
+        });
+        Thread newThread = new Thread(() -> {
+            send.setSubject(key + " " + number);
+            String process = text_startprc.getText();
+            if (process != null) {
+                send.sendContent("12 " + process);
+            }
+            else {
+                return;
+            }
+            long startTime = System.currentTimeMillis();
+            long timeout = 60000; // 60 seconds in milliseconds
+            boolean correctResponseReceived = false;
+            while (System.currentTimeMillis() - startTime < timeout && !correctResponseReceived) {
+                receiveMail receive = new receiveMail(username, password);
+                receive.receiveMail();
+                if (receive.getContent().equals(key + " " + number)) {
+                    if (receive.getText().equals("successfull")) {
+                        Platform.runLater(() -> {
+                            buttonStartPrc.setDisable(false);
+                            text_prc.setText("Run " + process + " successfully!");
+                            text_prc.setTextFill(Color.GREEN);
+                        });
+                    } else {
+                        buttonStartPrc.setDisable(false);
+                        text_prc.setText("Failed, " + process + " is not exist or started!");
+                        text_prc.setTextFill(Color.RED);
+                    }
+                    return;
+                }
+                try {
+                    Thread.sleep(5000); // Wait for 1 second before checking again
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (!correctResponseReceived) {
+                Platform.runLater(() -> {
+                    buttonStartPrc.setDisable(false);
+                    text_prc.setText("Failed, please sendmail again!");
+                    text_prc.setTextFill(Color.RED);
+                });
+            }
+        });
+        newThread.start();
+    }
+
     //Application
     @FXML
     private TableView<TaskInfo.Application> app_Table;
@@ -571,10 +628,10 @@ public class ClientController {
     private TableColumn<TaskInfo.Application, String> app_Name;
     private ObservableList<TaskInfo.Application> Applist;
 
-    public void OnButtonStartApp(ActionEvent event) {
+    public void OnButtonListApp(ActionEvent event) {
         number += 1;
         Platform.runLater(() -> {
-            buttonStartApp.setDisable(true);
+            buttonListApp.setDisable(true);
             text_app.setText("Please wait for a few seconds!");
             text_app.setTextFill(Color.GREEN);
         });
@@ -598,7 +655,7 @@ public class ClientController {
                         app_Name.setCellValueFactory(new PropertyValueFactory<TaskInfo.Application, String>("app_Name"));
                         loadAppFromFile();
                         app_Table.setItems(Applist);
-                        buttonStartApp.setDisable(false);
+                        buttonListApp.setDisable(false);
                         text_app.setText("");
                     });
                     return;
@@ -611,7 +668,7 @@ public class ClientController {
             }
             if (!correctResponseReceived) {
                 Platform.runLater(() -> {
-                    buttonStartApp.setDisable(false);
+                    buttonListApp.setDisable(false);
                     text_app.setText("Failed, send mail again!");
                     text_app.setTextFill(Color.RED);
                 });
@@ -712,7 +769,7 @@ public class ClientController {
                         buttonSaveGetFile.setDisable(false);
                         name_address.setCellValueFactory(new PropertyValueFactory<TaskInfo.address, String>("name_address"));
                         table_address.setItems(Addresslist);
-                        text_address.setText("Send file "+receive.getNameFile());
+                        text_address.setText("Send file " + receive.getNameFile());
                     });
                     System.out.println("Nhan file roi");
                     nameFile = receive.getNameFile();

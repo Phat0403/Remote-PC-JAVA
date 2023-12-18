@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -224,7 +225,7 @@
                                     <Insets left="50.0" />
                                  </HBox.margin>
                               </Label>
-                              <Button fx:id="buttonStartPrc" mnemonicParsing="false" onAction="#OnStartPrc" prefHeight="30.0" prefWidth="140.0" text="Start">
+                              <Button fx:id="buttonListPrc" mnemonicParsing="false" onAction="#OnListPrc" prefHeight="30.0" prefWidth="140.0" text="List">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -234,7 +235,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TableView fx:id="prc_Table" layoutX="66.0" layoutY="40.0" prefHeight="335.0" prefWidth="706.0" style="-fx-background-color: linear-gradient(to left, #bbd2c5, #536976);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
+                        <TableView fx:id="prc_Table" layoutX="51.2" layoutY="87.2" prefHeight="333.0" prefWidth="699.0" style="-fx-background-color: linear-gradient(to left, #bbd2c5, #536976);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="87.0">
                            <columns>
                               <TableColumn fx:id="prc_ProcessName" prefWidth="166.4000244140625" text="Process Name" />
                               <TableColumn fx:id="prc_PID" prefWidth="92.0" text="PID" />
@@ -243,6 +244,23 @@
                               <TableColumn fx:id="prc_MemUsage" prefWidth="163.20001220703125" text="Memory Usage" />
                            </columns>
                         </TableView>
+                        <HBox alignment="BOTTOM_LEFT" layoutX="85.0" layoutY="20.0" prefHeight="40.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
+                           <children>
+                              <Button fx:id="buttonStartPrc" mnemonicParsing="false" onAction="#OnButtonStartPrc" prefHeight="30.0" prefWidth="140.0" text="Start Process">
+                                 <HBox.margin>
+                                    <Insets left="57.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <TextField fx:id="text_startprc" maxWidth="300.0" prefHeight="30.0" prefWidth="206.0" promptText="Please enter the process to start">
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </content>
@@ -258,7 +276,7 @@
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="buttonStartApp" mnemonicParsing="false" onAction="#OnButtonStartApp" prefHeight="30.0" prefWidth="140.0" text="Start">
+                              <Button fx:id="buttonListApp" mnemonicParsing="false" onAction="#OnButtonListApp" prefHeight="30.0" prefWidth="140.0" text="List">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
