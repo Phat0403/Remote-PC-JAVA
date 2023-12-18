@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #2c3e50;" stylesheets="" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.server.Server">
+   <children>
+      <TableView fx:id="table_view" layoutY="141.0" prefHeight="362.0" prefWidth="802.0" style="-fx-background-color: linear-gradient(to left, #bbd2c5, #536976);">
+        <columns>
+          <TableColumn fx:id="stt" prefWidth="72.79998624324799" text="STT" />
+          <TableColumn fx:id="email" minWidth="0.0" prefWidth="348.7999954223633" text="Email" />
+            <TableColumn fx:id="request" prefWidth="226.40005493164062" text="Request" />
+            <TableColumn fx:id="response" prefWidth="153.5999755859375" text="Response" />
+        </columns>
+      </TableView>
+      <Text fill="#d7e4fa" layoutX="250.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REMOTE CONTROL" wrappingWidth="350.9366760253906">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+      <Label fx:id="timerLabel" layoutX="662.0" layoutY="90.0" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #ced6e0; -fx-background-radius: 5px; -fx-border-radius: 5px;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="25.0" layoutY="111.0" prefHeight="24.0" prefWidth="274.0" style="-fx-background-color: #ced6e0; -fx-background-radius: 5px;" text="Mail Server:  projectmangmaytinh@gmail.com">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="text_code" layoutX="25.0" layoutY="62.0" prefHeight="42.0" prefWidth="150.0" style="-fx-background-color: #ced6e0; -fx-background-radius: 5px; -fx-border-radius: 5px;">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="762.0" layoutY="14.0" onMouseClicked="#handleExit" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <image>
+            <Image url="@file/exit.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

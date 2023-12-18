@@ -1,0 +1,6 @@
+.root{
+    -fx-text-fill:white;
+}
+.table-view-with-data {
+    -fx-background-color:  linear-gradient(to left, #bbd2c5, #536976); /* or any other color */
+}
