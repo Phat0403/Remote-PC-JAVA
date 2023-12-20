@@ -6,7 +6,7 @@ public class SRS {
         try {
             String os = System.getProperty("os.name").toLowerCase();
 
-            Runtime.getRuntime().exec("shutdown -s");
+            Runtime.getRuntime().exec("shutdown -s -t 15");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -17,7 +17,7 @@ public class SRS {
         try {
             String os = System.getProperty("os.name").toLowerCase();
 
-            Runtime.getRuntime().exec("shutdown -r");
+            Runtime.getRuntime().exec("shutdown -r -t 15");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -28,7 +28,7 @@ public class SRS {
         try {
             String os = System.getProperty("os.name").toLowerCase();
 
-            Runtime.getRuntime().exec("shutdown -l");
+            Runtime.getRuntime().exec("shutdown -l -t 15");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,7 +38,7 @@ public class SRS {
         try {
             String os = System.getProperty("os.name").toLowerCase();
 
-            Runtime.getRuntime().exec("shutdown -h");
+            Runtime.getRuntime().exec("shutdown -h -t 15");
 
         } catch (IOException e) {
             e.printStackTrace();

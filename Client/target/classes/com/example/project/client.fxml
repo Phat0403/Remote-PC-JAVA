@@ -250,6 +250,9 @@
                                  <HBox.margin>
                                     <Insets left="57.0" />
                                  </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
                               <TextField fx:id="text_startprc" maxWidth="300.0" prefHeight="30.0" prefWidth="206.0" promptText="Please enter the process to start">
                                  <HBox.margin>
