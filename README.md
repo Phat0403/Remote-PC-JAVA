@@ -10,7 +10,7 @@ Welcome to our project from fit@hcmus! This project focuses on computer networki
 
 2. [Service](#service)
    
-3. [Control by gmail](#Control by gmail)
+3. [Control by gmail](#Control-by-gmail)
 
 4. [Contributor](#contributor)
 
@@ -47,6 +47,7 @@ View the active processes on the server (**Start**) and force the server to stop
 
 ## List Application
 View the currently opened applications on the server. (**Start**)
+
 # Control by gmail
 Use Gmail to send directly
 Send to the mail server
