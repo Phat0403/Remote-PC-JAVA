@@ -462,8 +462,8 @@ public class ClientController {
             if (!correctResponseReceived) {
                 Platform.runLater(() -> {
                     buttonListPrc.setDisable(false);
-                    text_app.setText("Failed, send mail again!");
-                    text_app.setTextFill(Color.RED);
+                    text_prc.setText("Failed, send mail again!");
+                    text_prc.setTextFill(Color.RED);
                 });
 
             }
