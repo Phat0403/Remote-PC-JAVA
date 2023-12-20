@@ -9,8 +9,10 @@ Welcome to our project from fit@hcmus! This project focuses on computer networki
    - [Client](#client)
 
 2. [Service](#service)
+   
+3. [Control by gmail](#Control by gmail)
 
-3. [Contributor](#contributor)
+4. [Contributor](#contributor)
 
 # Login 
 ## Server
@@ -45,6 +47,26 @@ View the active processes on the server (**Start**) and force the server to stop
 
 ## List Application
 View the currently opened applications on the server. (**Start**)
+# Control by gmail
+Use Gmail to send directly
+Send to the mail server
+| Request         | Subject              | Content                          |
+|-----------------|----------------------|----------------------------------|
+| Shutdown        | 1                    | Code + sequence number           |
+| Restart         | 2                    | Code + sequence number           |
+| Log out         | 3                    | Code + sequence number           |
+| Sleep           | 4                    | Code + sequence number           |
+| Screenshot      | 5                    | Code + sequence number           |
+| Start keylog    | 6                    | Code + sequence number           |
+| End keylog      | 7                    | Code + sequence number           |
+| Get file        | 8 + path (if any)    | Code + sequence number           |
+| List process    | 9                    | Code + sequence number           |
+| List app        | 10                   | Code + sequence number           |
+| Kill process    | 11                   | Code + sequence number           |
+| Start process   | 12                   | Code + sequence number           |
+- Code: taken from the server, consisting of 8 uppercase letters.
+- Sequence number: starts from 1 and increases after each request (do not send two emails with consecutive duplicate sequence numbers).
+- Path: The path to access to retrieve a file from the mail server.
 
 # Contributor
 - Dang Tan Phat: 22120261
