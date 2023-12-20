@@ -362,13 +362,13 @@ public class ClientController {
                     receiveMail receive = new receiveMail(username, password);
                     receive.receiveMail();
                     if (receive.getContent().equals(key + " " + number)) {
-                        if (receive.getText().equals("successfull")) {
+                        if (receive.getText().strip().equals("Successful")) {
                             Platform.runLater(() -> {
                                 buttonsd.setDisable(false);
                                 buttonsl.setDisable(false);
                                 buttonres.setDisable(false);
                                 buttonlog.setDisable(false);
-                                responsePower.setText("Successfull!");
+                                responsePower.setText("Successful!");
                                 responsePower.setTextFill(Color.GREEN);
                             });
                         }
@@ -760,13 +760,14 @@ public class ClientController {
                 receive.receiveMail();
                 System.out.println(receive.getContent());
                 if (receive.getContent().equals(key + " " + number + " ok")) {
-                    path = "";
+                    path = " ";
                     Addresslist.clear();
                     AddresslistOld.clear();
                     Platform.runLater(() -> {
                         buttonGetAddress.setDisable(false);
                         buttonBackAddress.setDisable(true);
                         buttonSaveGetFile.setDisable(false);
+                        text_address.setText("");
                         name_address.setCellValueFactory(new PropertyValueFactory<TaskInfo.address, String>("name_address"));
                         table_address.setItems(Addresslist);
                         text_address.setText("Send file " + receive.getNameFile());
