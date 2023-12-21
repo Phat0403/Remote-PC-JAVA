@@ -497,7 +497,7 @@ public class ClientController {
                 buttonKillPrc.setDisable(true);
                 buttonListPrc.setDisable(true);
                 text_prc.setText("Please wait a few minutes!");
-                responeScr.setTextFill(Color.GREEN);
+                text_prc.setTextFill(Color.GREEN);
             });
 
             TaskInfo.Process selectedPID = prc_Table.getSelectionModel().getSelectedItem();
@@ -591,7 +591,7 @@ public class ClientController {
                 receiveMail receive = new receiveMail(username, password);
                 receive.receiveMail();
                 if (receive.getContent().equals(key + " " + number)) {
-                    if (receive.getText().strip().equals("successfull")) {
+                    if (receive.getText().strip().equals("successful")) {
                         Platform.runLater(() -> {
                             buttonStartPrc.setDisable(false);
                             text_prc.setText("Run " + process + " successfully!");

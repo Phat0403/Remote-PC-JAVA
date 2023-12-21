@@ -245,7 +245,7 @@ public class sendResponse extends Thread{
                     Server.nameReqList.add("Run app " + appName);
                     sendMail sm = new sendMail(getMail(Server.mailList.get(index)),DEFAULT_MAIL,DEFAULT_PASSWORD,key+" "+Server.numberList.get(index));
                     if (ra.isSuccess()){
-                        sm.sendContent("successfull");
+                        sm.sendContent("successful");
                         Server.resList.add("Successful");
                     }
                     else {
