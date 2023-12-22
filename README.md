@@ -63,11 +63,13 @@ Send to the mail server
 | Get file        | 8 + path (if any)    | Code + sequence number           |
 | List process    | 9                    | Code + sequence number           |
 | List app        | 10                   | Code + sequence number           |
-| Kill process    | 11                   | Code + sequence number           |
-| Start process   | 12                   | Code + sequence number           |
+| Kill process    | 11 + pid process     | Code + sequence number           |
+| Start process   | 12 + name process    | Code + sequence number           |
 - Code: taken from the server, consisting of 8 uppercase letters.
 - Sequence number: starts from 1 and increases after each request (do not send two emails with consecutive duplicate sequence numbers).
 - Path: The path to access to retrieve a file from the mail server.
+- Example: You want to request "shutdown", you should send mail with subject = "WOIEUOIE 1", content = "1" to mail server (projectmangmaytinh2004@gmail.com). 
+And you want to send the next request "screenshot", you should send mail with subject = "WOIEUOIE 2", content = "5" to mail server (projectmangmaytinh2004@gmail.com). 
 
 # Contributor
 - Dang Tan Phat: 22120261
