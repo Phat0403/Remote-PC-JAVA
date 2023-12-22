@@ -17,7 +17,7 @@ Welcome to our project from fit@hcmus! This project focuses on computer networki
 # Login 
 ## Server
 When the server starts, a verification code will be generated (highlighted in the red box below). This code is required for the client to establish a connection and log in.
-
+![code](code)
 ## Client
 Use your Gmail and the code provided by the server to log in. Note: the password is the [app password](https://support.google.com/accounts/answer/185833?hl=en)
 
