@@ -9,10 +9,16 @@ Welcome to our project from fit@hcmus! This project focuses on computer networki
    - [Client](#client)
 
 2. [Service](#service)
+   - [System Control](#System-Control)
+   - [Screen Shot](#Screen-Shot)
+   - [Key Logger](#Key-Logger)
+   - [Get File](#Get-File)
+   - [List Process](#List-Process)
+   - [List Application](#List-Application)
    
-3. [Control by gmail](#Control-by-gmail)
+4. [Control by gmail](#Control-by-gmail)
 
-4. [Contributor](#contributor)
+5. [Contributor](#contributor)
 
 # Login 
 ## Server
